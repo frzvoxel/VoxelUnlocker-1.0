@@ -6,7 +6,8 @@ extern "C" {
 #endif
 
 	void NEXTPAGE_STARTUP(void);
-	void Task_SchedulerPAGE(void);
+	void hosts_page(void);
+	void tmp_page(void);
 
 #ifdef __cplusplus
 }

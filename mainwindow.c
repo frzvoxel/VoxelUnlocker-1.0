@@ -27,18 +27,27 @@ void hideCursor() {
 void draw_window(int selected ) {
     system("cls");
 
-    char* items[] = { "Clean Startup", "Exit" };
-    int count = 2;
+    char* items[] = { "Clean Startup", "Restore Hosts", "Delete tmp files", "Exit",};
+    int count = 4;
+
+    // TUI
     gotoxy(46, 9); setcolor(11); printf(" ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━╮");
     gotoxy(47, 10); setcolor(11); printf("┃       VoxelUnlocker       ┃");
-    gotoxy(47, 11); setcolor(11); printf("┃           1.1             ┃");
+    gotoxy(47, 11); setcolor(11); printf("┃           1.2             ┃");
     gotoxy(47, 12); setcolor(11); printf("┃———————————————————————————┃");
     gotoxy(47, 13); setcolor(11); printf("┃                           ┃");
     gotoxy(47, 14); setcolor(11); printf("┃                           ┃");
     gotoxy(47, 15); setcolor(11); printf("┃                           ┃");
     gotoxy(47, 16); setcolor(11); printf("┃                           ┃");
     gotoxy(47, 17); setcolor(11); printf("┃                           ┃");
-    gotoxy(47, 18); setcolor(11); printf("╰━━━━━━━━━━━━━━━━━━━━━━━━━━━╯");
+    gotoxy(47, 18); setcolor(11); printf("┃                           ┃");
+    gotoxy(47, 19); setcolor(11); printf("┃                           ┃");
+    gotoxy(47, 20); setcolor(11); printf("┃                           ┃");
+    gotoxy(47, 21); setcolor(11); printf("┃                           ┃");
+    gotoxy(47, 22); setcolor(11); printf("┃                           ┃");
+    gotoxy(47, 23); setcolor(11); printf("┃                           ┃");
+    gotoxy(47, 24); setcolor(11); printf("╰━━━━━━━━━━━━━━━━━━━━━━━━━━━╯");
+    // TUI
 
     for (int i = 0; i < count; i++) {
         gotoxy(53, 14 + i * 2);
@@ -71,10 +80,10 @@ int main() {
 
             switch (key) {
             case KEY_UP:
-                selected = (selected - 1 + 4) % 2;
+                selected = (selected - 1 + 4) % 4;
                 break;
             case KEY_DOWN:
-                selected =  (selected +  1) % 2;
+                selected =  (selected +  1) % 4;
                 break;
             }
         }
@@ -83,6 +92,14 @@ int main() {
                 NEXTPAGE_STARTUP();
             }
             if (selected == 1) {
+                hosts_page();
+            }
+
+            if (selected == 2) {
+                tmp_page();
+            }
+
+            if (selected == 3) {
                 break;
             }
         }

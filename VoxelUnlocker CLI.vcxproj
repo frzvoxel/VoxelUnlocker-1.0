@@ -20,17 +20,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AutoStartup.c" />
+    <ClCompile Include="hosts">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="hosts.c" />
     <ClCompile Include="Intro.c" />
     <ClCompile Include="mainwindow.c" />
-    <ClCompile Include="Processing.c" />
-    <ClCompile Include="Task_SchedulerPAGE.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
-    </ClCompile>
+    <ClCompile Include="tmp.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pages.h" />
     <ClInclude Include="Intro.h" />
-    <ClInclude Include="Processing.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
