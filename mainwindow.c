@@ -8,15 +8,18 @@
 #define KEY_DOWN 80
 #define ENTER 13
 
+// Moves console cursor to specified (x, y) position
 void gotoxy(int x, int y) {
 	COORD cursor = { x,y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursor);
 }
 
+// Set Terminal Color Using color varibale
 void setcolor(int color) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
+// Hide Corsor in terminal
 void hideCursor() {
     CONSOLE_CURSOR_INFO cursor;
     GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor);
@@ -24,6 +27,7 @@ void hideCursor() {
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor);
 }
 
+// Draws the main menu window with highlighted selected item
 void draw_window(int selected ) {
     system("cls");
 
@@ -49,6 +53,7 @@ void draw_window(int selected ) {
     gotoxy(47, 24); setcolor(11); printf("╰━━━━━━━━━━━━━━━━━━━━━━━━━━━╯");
     // TUI
 
+    // check selected??
     for (int i = 0; i < count; i++) {
         gotoxy(53, 14 + i * 2);
         if (i == selected) {
@@ -62,20 +67,21 @@ void draw_window(int selected ) {
     }
 }
 
+// entry point
 int main() {
-    SetConsoleOutputCP(65001); 
-    SetConsoleCP(65001);
-    hideCursor();
-    int selected = 0;
-    int key;
+    SetConsoleOutputCP(65001); // change the encoding of the terminal 
+    SetConsoleCP(65001);  // change the encoding of the terminal 
+    hideCursor(); // hide cursor
+    int selected = 0; // currently highlighted menu item index
+    int key; // user input 
 
     while (1) {
-        draw_window(selected);
+        draw_window(selected); // call draw window
         
-        key = getch();
+        key = getch(); // get user input
 
         if (key == 0 || key == 224) {
-            key = getch();
+            key = getch(); // get user input
             
 
             switch (key) {
